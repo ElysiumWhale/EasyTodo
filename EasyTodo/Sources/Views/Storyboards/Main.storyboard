@@ -75,6 +75,9 @@
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="image" keyPath="highlightedImage" value="checkmark.circle" catalog="system"/>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="toggleButtonDidPressWithSender:" destination="ciA-Fx-zEc" eventType="touchUpInside" id="SVA-uX-4l6"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y4H-0g-NCR">
                                                     <rect key="frame" x="49" y="8" width="293" height="32"/>

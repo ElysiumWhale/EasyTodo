@@ -60,9 +60,17 @@ extension MainView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cells.todoCell.rawValue, for: indexPath) as? TodoCell {
             let todo = todos[indexPath.row]
-            cell.configure(title: todo.title, description: todo.description, state: todo.state)
+            cell.configure(title: todo.title, description: todo.description,
+                           state: todo.state, delegate: self, index: indexPath.row)
             return cell
         }
         return UICollectionViewCell()
+    }
+}
+
+// MARK: - TodoCellDelegate
+extension MainView: TodoCellDelegate {
+    func todoCellDelegate(didToggle state: TodoStates, at index: Int) {
+        todos[index].state = state
     }
 }

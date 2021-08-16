@@ -3,6 +3,12 @@ import UIKit
 @IBDesignable class ToggleButton: UIButton {
     @IBInspectable var highlightedImage: UIImage?
     
+    var todoState: TodoStates = .active {
+        didSet {
+            isSelected = todoState == .done ? true : false
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -11,7 +17,7 @@ import UIKit
         }
     }
     
-    func setState(_ state: TodoStates) {
-        isSelected = state == .done ? true : false
+    func toggle() {
+        todoState = todoState == .active ? .done : .active
     }
 }
