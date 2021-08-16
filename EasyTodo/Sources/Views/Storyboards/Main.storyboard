@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="i00-Ty-3ae">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="D7c-DZ-Q8S">
+            <objects>
+                <navigationController id="i00-Ty-3ae" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="Svn-AH-Nsz">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="H0g-rO-mJf"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nPU-aR-iEp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-317" y="104"/>
+        </scene>
+        <!--Easy Todo-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="MainView" id="Y6W-OH-hqX" customClass="MainView" customModule="EasyTodo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hmI-QE-OuM">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="WQE-nN-G2W">
+                                    <size key="itemSize" width="350" height="130"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TodoCell" id="ciA-Fx-zEc" customClass="TodoCell" customModule="EasyTodo" customModuleProvider="target">
+                                        <rect key="frame" x="32" y="10" width="350" height="130"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="NQP-78-qEo">
+                                            <rect key="frame" x="0.0" y="0.0" width="350" height="130"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dVx-vA-0Wt" customClass="ToggleButton" customModule="EasyTodo" customModuleProvider="target">
+                                                    <rect key="frame" x="8" y="8" width="33" height="32"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="33" id="mmW-o5-5Z8"/>
+                                                        <constraint firstAttribute="height" constant="32" id="xeF-W6-LUI"/>
+                                                    </constraints>
+                                                    <color key="tintColor" name="MainTint"/>
+                                                    <state key="normal">
+                                                        <imageReference key="image" image="circle" catalog="system" symbolScale="large"/>
+                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="22" scale="large" weight="bold"/>
+                                                    </state>
+                                                    <state key="selected">
+                                                        <imageReference key="image" image="checkmark.circle.fill" catalog="system" symbolScale="large"/>
+                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="22" scale="large" weight="bold"/>
+                                                    </state>
+                                                    <state key="highlighted">
+                                                        <imageReference key="image" image="checkmark.circle.fill" catalog="system" symbolScale="large"/>
+                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="22" scale="large" weight="bold"/>
+                                                    </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="highlightedImage" value="checkmark.circle" catalog="system"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y4H-0g-NCR">
+                                                    <rect key="frame" x="49" y="8" width="293" height="32"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="293" id="l4b-yY-Qex"/>
+                                                        <constraint firstAttribute="height" constant="32" id="o9f-Ph-SwH"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description Description Description Description Description Description" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="48u-xS-W1j">
+                                                    <rect key="frame" x="49" y="48" width="293" height="74"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="74" id="qEX-lH-Ph7"/>
+                                                        <constraint firstAttribute="width" constant="293" id="tro-TV-dp8"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="48u-xS-W1j" firstAttribute="leading" secondItem="NQP-78-qEo" secondAttribute="leading" constant="49" id="K0W-mg-Nb3"/>
+                                                <constraint firstAttribute="trailing" secondItem="y4H-0g-NCR" secondAttribute="trailing" constant="8" id="PcV-Zv-Dvi"/>
+                                                <constraint firstItem="48u-xS-W1j" firstAttribute="top" secondItem="y4H-0g-NCR" secondAttribute="bottom" constant="8" symbolic="YES" id="fSc-UO-SD8"/>
+                                                <constraint firstItem="dVx-vA-0Wt" firstAttribute="top" secondItem="NQP-78-qEo" secondAttribute="top" constant="8" id="j6J-cD-PZv"/>
+                                                <constraint firstItem="dVx-vA-0Wt" firstAttribute="leading" secondItem="NQP-78-qEo" secondAttribute="leading" constant="8" id="js7-dv-7ay"/>
+                                                <constraint firstItem="y4H-0g-NCR" firstAttribute="leading" secondItem="dVx-vA-0Wt" secondAttribute="trailing" constant="8" id="o84-qd-AMC"/>
+                                                <constraint firstItem="y4H-0g-NCR" firstAttribute="top" secondItem="NQP-78-qEo" secondAttribute="top" constant="8" id="sh5-iL-SQg"/>
+                                                <constraint firstAttribute="bottom" secondItem="48u-xS-W1j" secondAttribute="bottom" constant="8" id="yPj-HP-bzX"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <color key="backgroundColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="0.69332057120000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <size key="customSize" width="350" height="130"/>
+                                        <connections>
+                                            <outlet property="descriptionLabel" destination="48u-xS-W1j" id="7Fs-zZ-A6h"/>
+                                            <outlet property="titleLabel" destination="y4H-0g-NCR" id="HNm-CB-nme"/>
+                                            <outlet property="toggleButton" destination="dVx-vA-0Wt" id="c9c-At-PLQ"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="Y6W-OH-hqX" id="io8-Pi-ucv"/>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="aih-rz-yy0"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="hmI-QE-OuM" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="019-3M-dIh"/>
+                            <constraint firstItem="hmI-QE-OuM" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="U5d-24-w1E"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="hmI-QE-OuM" secondAttribute="bottom" id="XO5-oN-01C"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="hmI-QE-OuM" secondAttribute="trailing" id="a52-lx-j1J"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Easy Todo" id="fhH-Mf-9Ug"/>
+                    <connections>
+                        <outlet property="todosCollectionView" destination="hmI-QE-OuM" id="nXR-fQ-dZO"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="424.63768115942031" y="103.79464285714285"/>
+        </scene>
+    </scenes>
+    <designables>
+        <designable name="dVx-vA-0Wt">
+            <size key="intrinsicContentSize" width="33" height="32"/>
+        </designable>
+    </designables>
+    <resources>
+        <image name="checkmark.circle" catalog="system" width="128" height="121"/>
+        <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="circle" catalog="system" width="128" height="121"/>
+        <namedColor name="MainTint">
+            <color red="0.33974164724349976" green="0.71500712633132935" blue="0.7629469633102417" alpha="0.88382139900662249" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
