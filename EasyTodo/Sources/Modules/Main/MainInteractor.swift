@@ -1,13 +1,7 @@
 import Foundation
 
-protocol MainScreenInteractor: AnyInteractor {
-    func getTodos()
-}
-
 class MainInteractor: MainScreenInteractor {
-    typealias Presenter = MainPresenter
-    
-    var presenter: Presenter?
+    var presenter: MainScreenPresenter?
     
     func getTodos() {
         guard let url = URL(string: URLStrings.jsonServerTodos.rawValue) else { return }

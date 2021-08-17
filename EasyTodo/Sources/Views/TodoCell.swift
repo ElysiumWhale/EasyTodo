@@ -23,6 +23,7 @@ class TodoCell: UICollectionViewCell {
         self.descr = description
         toggleButton.todoState = state
         configureTextFor(state, title, description)
+        configureShadow(with: 10)
     }
     
     private func configureTextFor(_ state: TodoStates, _ title: String, _ description: String) {
@@ -30,7 +31,7 @@ class TodoCell: UICollectionViewCell {
         descriptionLabel.attributedText = state == .active ? NSAttributedString(string: description) : NSAttributedString(string: description, attributes: [NSAttributedString.Key.strikethroughStyle: NSUnderlineStyle.single.rawValue])
     }
     
-    @IBAction func toggleButtonDidPress(sender: ToggleButton?) {
+    @IBAction private func toggleButtonDidPress(sender: ToggleButton?) {
         toggleButton.toggle()
         configureTextFor(toggleButton.todoState, title, descr)
         delegate?.todoCellDelegate(didToggle: toggleButton.todoState, at: index)

@@ -1,23 +1,15 @@
 import UIKit
 
-protocol MainScreenPresenter: AnyPresenter {
-    func interactorDidLoadTodos(_ result: Result<[Todo], Error>)
-}
-
 class MainPresenter: MainScreenPresenter {
-    typealias View = MainView
-    typealias Interactor = MainInteractor
-    typealias Router = MainRouter
+    var view: MainScreenView?
     
-    var view: View?
-    
-    var interactor: Interactor? {
+    var interactor: MainScreenInteractor? {
         didSet {
             interactor?.getTodos()
         }
     }
     
-    var router: Router?
+    var router: MainScreenRouter?
     
     func interactorDidLoadTodos(_ result: Result<[Todo], Error>) {
         switch result {
@@ -26,5 +18,9 @@ class MainPresenter: MainScreenPresenter {
             case .failure(let error):
                 view?.update(with: error.localizedDescription)
         }
+    }
+    
+    func showDetailOf(_ todo: Todo) {
+        router?.showDetail(from: view!, todo)
     }
 }

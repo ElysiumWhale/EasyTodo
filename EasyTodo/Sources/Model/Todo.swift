@@ -5,7 +5,7 @@ enum TodoStates: String {
     case done = "done"
 }
 
-struct Todo: AnyEntity {
+struct Todo {
     let creationDate: Date // yyyy-MM-dd
     var title: String
     var description: String

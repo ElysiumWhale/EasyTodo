@@ -1,16 +1,9 @@
 import UIKit
 
-protocol MainScreenView: UIViewController, StoryboardedView {
-    func update(with todos: [Todo])
-    func update(with error: String)
-}
-
-class MainView: UIViewController, StoryboardedView {
-    typealias Presenter = MainPresenter
-    
+class MainView: UIViewController, MainScreenView {
     @IBOutlet private var todosCollectionView: UICollectionView!
     
-    var presenter: Presenter?
+    var presenter: MainScreenPresenter?
     
     private var todos: [Todo] = []
     
@@ -26,7 +19,6 @@ class MainView: UIViewController, StoryboardedView {
     
     func update(with todos: [Todo]) {
         DispatchQueue.main.async { [weak self] in
-            
             self?.todosCollectionView.backgroundView = nil
             self?.todos = todos
             self?.todosCollectionView.reloadData()
@@ -42,12 +34,16 @@ class MainView: UIViewController, StoryboardedView {
             self?.todosCollectionView.fadeIn(0.6)
         }
     }
+    
+    @IBAction func addTodoDidPress(_ sender: Any) {
+        //
+    }
 }
 
 // MARK: - UICollectionViewDelegate
 extension MainView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // todo
+        presenter?.showDetailOf(todos[indexPath.row])
     }
 }
 

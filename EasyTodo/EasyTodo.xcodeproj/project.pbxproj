@@ -11,7 +11,7 @@
 		146CE92A26CAEAAE0072B603 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146CE92926CAEAAE0072B603 /* SceneDelegate.swift */; };
 		146CE93126CAEAAF0072B603 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 146CE93026CAEAAF0072B603 /* Assets.xcassets */; };
 		146CE93426CAEAAF0072B603 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 146CE93226CAEAAF0072B603 /* LaunchScreen.storyboard */; };
-		146CE94126CAEEDD0072B603 /* AnyVIPER.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146CE94026CAEEDD0072B603 /* AnyVIPER.swift */; };
+		146CE94126CAEEDD0072B603 /* MainScreenProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146CE94026CAEEDD0072B603 /* MainScreenProtocols.swift */; };
 		146CE94B26CAEFAD0072B603 /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146CE94A26CAEFAD0072B603 /* MainRouter.swift */; };
 		146CE94E26CAF03E0072B603 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146CE94D26CAF03E0072B603 /* Todo.swift */; };
 		146CE95026CAF0EB0072B603 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146CE94F26CAF0EB0072B603 /* MainPresenter.swift */; };
@@ -23,6 +23,10 @@
 		146CE95E26CB05580072B603 /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146CE95D26CB05580072B603 /* ToggleButton.swift */; };
 		146CE96026CB12C10072B603 /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146CE95F26CB12C10072B603 /* Mocks.swift */; };
 		146CE96226CB1FA80072B603 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146CE96126CB1FA80072B603 /* Extensions.swift */; };
+		146CE96426CB326F0072B603 /* DetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146CE96326CB326F0072B603 /* DetailRouter.swift */; };
+		146CE96626CB34750072B603 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146CE96526CB34750072B603 /* DetailView.swift */; };
+		146CE96A26CB34910072B603 /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146CE96926CB34910072B603 /* DetailPresenter.swift */; };
+		146CE96C26CB5B8E0072B603 /* DetailScreenProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146CE96B26CB5B8E0072B603 /* DetailScreenProtocols.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,7 +36,7 @@
 		146CE93026CAEAAF0072B603 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		146CE93326CAEAAF0072B603 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		146CE93526CAEAAF0072B603 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		146CE94026CAEEDD0072B603 /* AnyVIPER.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyVIPER.swift; sourceTree = "<group>"; };
+		146CE94026CAEEDD0072B603 /* MainScreenProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenProtocols.swift; sourceTree = "<group>"; };
 		146CE94A26CAEFAD0072B603 /* MainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
 		146CE94D26CAF03E0072B603 /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		146CE94F26CAF0EB0072B603 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
@@ -44,6 +48,10 @@
 		146CE95D26CB05580072B603 /* ToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButton.swift; sourceTree = "<group>"; };
 		146CE95F26CB12C10072B603 /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
 		146CE96126CB1FA80072B603 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		146CE96326CB326F0072B603 /* DetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRouter.swift; sourceTree = "<group>"; };
+		146CE96526CB34750072B603 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		146CE96926CB34910072B603 /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
+		146CE96B26CB5B8E0072B603 /* DetailScreenProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailScreenProtocols.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,10 +116,10 @@
 		146CE93D26CAED2D0072B603 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				146CE94A26CAEFAD0072B603 /* MainRouter.swift */,
-				146CE94F26CAF0EB0072B603 /* MainPresenter.swift */,
-				146CE95126CAF1840072B603 /* MainInteractor.swift */,
 				146CE95326CAF1AB0072B603 /* MainView.swift */,
+				146CE95126CAF1840072B603 /* MainInteractor.swift */,
+				146CE94F26CAF0EB0072B603 /* MainPresenter.swift */,
+				146CE94A26CAEFAD0072B603 /* MainRouter.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -119,6 +127,9 @@
 		146CE93E26CAED360072B603 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				146CE96526CB34750072B603 /* DetailView.swift */,
+				146CE96926CB34910072B603 /* DetailPresenter.swift */,
+				146CE96326CB326F0072B603 /* DetailRouter.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -126,7 +137,8 @@
 		146CE93F26CAEEA20072B603 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				146CE94026CAEEDD0072B603 /* AnyVIPER.swift */,
+				146CE94026CAEEDD0072B603 /* MainScreenProtocols.swift */,
+				146CE96B26CB5B8E0072B603 /* DetailScreenProtocols.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -236,14 +248,18 @@
 				146CE94B26CAEFAD0072B603 /* MainRouter.swift in Sources */,
 				146CE95C26CB02850072B603 /* TodoCell.swift in Sources */,
 				146CE92A26CAEAAE0072B603 /* SceneDelegate.swift in Sources */,
+				146CE96426CB326F0072B603 /* DetailRouter.swift in Sources */,
 				146CE94E26CAF03E0072B603 /* Todo.swift in Sources */,
 				146CE95026CAF0EB0072B603 /* MainPresenter.swift in Sources */,
 				146CE95226CAF1840072B603 /* MainInteractor.swift in Sources */,
 				146CE96226CB1FA80072B603 /* Extensions.swift in Sources */,
 				146CE95E26CB05580072B603 /* ToggleButton.swift in Sources */,
-				146CE94126CAEEDD0072B603 /* AnyVIPER.swift in Sources */,
+				146CE94126CAEEDD0072B603 /* MainScreenProtocols.swift in Sources */,
 				146CE95626CAF80A0072B603 /* Constants.swift in Sources */,
+				146CE96626CB34750072B603 /* DetailView.swift in Sources */,
+				146CE96C26CB5B8E0072B603 /* DetailScreenProtocols.swift in Sources */,
 				146CE96026CB12C10072B603 /* Mocks.swift in Sources */,
+				146CE96A26CB34910072B603 /* DetailPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

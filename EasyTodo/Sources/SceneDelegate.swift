@@ -6,9 +6,9 @@ class SceneDelegate: UIResponder {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        let mainRouter = MainRouter.start()
+        let mainController = MainRouter.start()
         let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = mainRouter.navigationController
+        window.rootViewController = mainController
         self.window = window
         window.makeKeyAndVisible()
     }
