@@ -23,4 +23,12 @@ class MainPresenter: MainScreenPresenter {
     func showDetailOf(_ todo: Todo) {
         router?.showDetail(from: view!, todo)
     }
+    
+    func showNewDetail() {
+        router?.showNewDetail(from: view!)
+    }
+    
+    func todoDidAdd(_ todo: Todo) {
+        view?.update(with: todo)
+    }
 }

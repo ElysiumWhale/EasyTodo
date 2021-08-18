@@ -31,7 +31,6 @@
         <!--Easy Todo-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="MainView" id="Y6W-OH-hqX" customClass="MainView" customModule="EasyTodo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
@@ -148,6 +147,7 @@
                         <outlet property="todosCollectionView" destination="hmI-QE-OuM" id="nXR-fQ-dZO"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="424.63768115942031" y="103.79464285714285"/>
         </scene>
@@ -189,6 +189,9 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="22"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="textDidChangedWithSender:" destination="Do5-Gj-IP3" eventType="editingChanged" id="UpE-9D-vce"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -224,6 +227,9 @@
                                 <state key="normal" title="Add">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="saveDidPressedWithSender:" destination="Do5-Gj-IP3" eventType="touchUpInside" id="rhM-fa-Etf"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="tjX-F7-pa7"/>
@@ -265,7 +271,7 @@
         <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
         <image name="circle" catalog="system" width="128" height="121"/>
         <namedColor name="MainTint">
-            <color red="0.33974164724349976" green="0.71500712633132935" blue="0.7629469633102417" alpha="0.88382139900662249" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.34000000357627869" green="0.7149999737739563" blue="0.7630000114440918" alpha="0.88400000333786011" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

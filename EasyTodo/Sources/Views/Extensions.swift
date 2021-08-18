@@ -37,9 +37,9 @@ extension UIViewController {
 
 // MARK: - UITextField error border
 extension UITextField {
-    func toggleErrorState(hasError: Bool) {
-        layer.borderColor = hasError ? UIColor.systemRed.cgColor : UIColor.clear.cgColor
-        layer.borderWidth = hasError ? 1 : 0
+    func toggleErrorState(hasError: Bool, normalColor: CGColor? = nil) {
+        layer.borderColor = hasError ? UIColor.systemRed.cgColor : normalColor ?? UIColor.clear.cgColor
+        layer.borderWidth = hasError ? 1 : normalColor == nil ? 0 : 1
     }
 }
 
@@ -69,5 +69,17 @@ extension UIViewController {
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
+    }
+}
+
+// MARK: - AppTints
+extension UIColor {
+    enum AppTints: String {
+        case main = "MainTint"
+        case secondary = "SecondaryTint"
+    }
+    
+    convenience init(_ tint: AppTints) {
+        self.init(named: tint.rawValue)!
     }
 }

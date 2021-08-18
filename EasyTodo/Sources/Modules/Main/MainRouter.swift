@@ -1,6 +1,8 @@
 import UIKit
 
 class MainRouter: MainScreenRouter {
+    var view: MainScreenView?
+    
     class func start() -> UIViewController {
         let navigationController = UIStoryboard(name: Storyboards.main.rawValue, bundle: .main).instantiateViewController(identifier: "MainNavigationController")
         
@@ -8,13 +10,14 @@ class MainRouter: MainScreenRouter {
         
         var presenter: MainScreenPresenter = MainPresenter()
         var interactor: MainScreenInteractor = MainInteractor()
-        let router: MainScreenRouter = MainRouter()
+        var router: MainScreenRouter = MainRouter()
         
+        router.view = view
         view.presenter = presenter
         presenter.view = view
         presenter.router = router
-        presenter.interactor = interactor
         interactor.presenter = presenter
+        presenter.interactor = interactor
         
         return navigationController
     }
@@ -27,7 +30,17 @@ class MainRouter: MainScreenRouter {
         }
     }
     
-    func detailDidFinished(with: Todo? = nil, isNew: Bool = false) {
+    func showNewDetail(from view: MainScreenView) {
+        let postDetailVC = DetailRouter.createAddingModuleFor(delegate: self)
         
+        if let view = view as? UIViewController {
+            view.navigationController?.present(postDetailVC, animated: true)
+        }
+    }
+}
+
+extension MainRouter: NewTodoReciever {
+    func todoDidAdded(_ todo: Todo) {
+        view?.update(with: todo)
     }
 }

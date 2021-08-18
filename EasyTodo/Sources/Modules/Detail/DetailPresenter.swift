@@ -7,6 +7,10 @@ class DetailPresenter: DetailScreenPresenter {
     var todo: Todo?
     
     func viewDidLoad() {
-        view?.showDetails(for: todo!)
+        view?.showDetails(todo?.title ?? "", todo?.description ?? "", todo?.creationDate ?? Date(), isNew: todo == nil)
+    }
+    
+    func saveNewTodo(with title: String, and description: String) {
+        router?.saveTodo(Todo(creationDate: Date(), title: title, description: description, state: .active))
     }
 }

@@ -15,7 +15,7 @@ extension StoryboardedView {
 protocol DetailScreenView: StoryboardedView {
     var presenter: DetailScreenPresenter? { get set }
     
-    func showDetails(for todo: Todo)
+    func showDetails(_ title: String, _ description: String, _ date: Date, isNew: Bool)
 }
 
 
@@ -25,12 +25,12 @@ protocol DetailScreenPresenter {
     var todo: Todo? { get set }
     
     func viewDidLoad()
+    func saveNewTodo(with title: String, and description: String)
 }
 
 protocol DetailScreenRouter {
-    func dismiss()
-    func addNewTodo(_ todo: Todo)
     func saveTodo(_ todo: Todo)
     
     static func createModule(for todo: Todo) -> UIViewController
+    static func createAddingModuleFor(delegate: NewTodoReciever) -> UIViewController
 }

@@ -11,8 +11,8 @@ class MainView: UIViewController, MainScreenView {
         super.viewDidLoad()
         todosCollectionView.delegate = self
         todosCollectionView.dataSource = self
-        todosCollectionView.alpha = 0
         todosCollectionView.alwaysBounceVertical = true
+        todosCollectionView.backgroundView = createBackground(labelText: "Loading...")
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.title = "Easy Todo"
     }
@@ -22,7 +22,9 @@ class MainView: UIViewController, MainScreenView {
             self?.todosCollectionView.backgroundView = nil
             self?.todos = todos
             self?.todosCollectionView.reloadData()
-            self?.todosCollectionView.fadeIn(0.6)
+            if todos.isEmpty {
+                self?.todosCollectionView.backgroundView = self?.createBackground(labelText: "No todos. Press \"+\" to add new.")
+            }
         }
     }
     
@@ -31,12 +33,22 @@ class MainView: UIViewController, MainScreenView {
             self?.todos = []
             self?.todosCollectionView.reloadData()
             self?.todosCollectionView.backgroundView = self?.createBackground(labelText: error)
-            self?.todosCollectionView.fadeIn(0.6)
+        }
+    }
+    
+    func update(with newTodo: Todo) {
+        DispatchQueue.main.async { [weak self] in
+            let needToFadeIn = self?.todos.isEmpty ?? false
+            self?.todos.append(newTodo)
+            self?.todosCollectionView.reloadData()
+            if needToFadeIn {
+                self?.todosCollectionView.backgroundView = nil
+            }
         }
     }
     
     @IBAction func addTodoDidPress(_ sender: Any) {
-        //
+        presenter?.showNewDetail()
     }
 }
 
@@ -44,6 +56,13 @@ class MainView: UIViewController, MainScreenView {
 extension MainView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         presenter?.showDetailOf(todos[indexPath.row])
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        cell.alpha = 0
+        UIView.animate(withDuration: 0.5,
+                       delay: 0.05 * Double(indexPath.row),
+                       animations: { cell.alpha = 1 })
     }
 }
 
