@@ -30,6 +30,9 @@ class DetailView: UIViewController {
             return
         }
     }
+    @IBAction func closeDidPress(_ sender: Any) {
+        dismiss(animated: true)
+    }
     
     @IBAction func saveDidPressed(sender: UIButton?) {
         guard let title = titleTextField.text, !title.isEmpty else {
@@ -42,6 +45,7 @@ class DetailView: UIViewController {
     }
 }
 
+// MARK: DetailScreenView
 extension DetailView: DetailScreenView {
     func showDetails(_ title: String, _ description: String, _ date: Date, isNew: Bool) {
         let dateForm = DateFormatter()
