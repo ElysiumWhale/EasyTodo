@@ -1,28 +1,28 @@
 {
   "todos": [
     {
-      "id" : 1
+      "id" : 1,
       "title": "Hello",
       "description": "World",
       "state": "done",
       "creationDate": "2021-08-01"
     },
     {
-      "id": 2
+      "id": 2,
       "title": "my-json",
       "description": "Is a cool project",
       "state": "active",
       "creationDate": "2021-08-02"
     },
     {
-      "id": 3
+      "id": 3,
       "title": "Which allows",
       "description": "To mock api calls easily",
       "state": "done",
       "creationDate": "2021-08-03"
     },
     {
-      "id": 4
+      "id": 4,
       "title": "And works",
       "description": "with creating of one file on GitHub",
       "state": "active",
