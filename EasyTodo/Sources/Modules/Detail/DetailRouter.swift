@@ -1,31 +1,37 @@
 import UIKit
 
-class DetailRouter: DetailScreenRouter {
-    var todoRecieverDelegate: NewTodoReciever?
-    
-    class func createModule(for todo: Todo) -> UIViewController {
-        let view: DetailScreenView = DetailView.instantiate(from: .main)
-        configureModule(for: view, todo: todo)
-        return view as! UIViewController
+enum DetailScenario {
+    case new
+    case edit(element: Todo)
+}
+
+class DetailRouter: BaseRouter, DetailScreenRouter {
+    var onSaveTodo: ParameterClosure<Todo>?
+
+    func start(with scenario: DetailScenario) {
+        let module = createDetailModule(for: scenario, onSave: onSaveTodo)
+        navigationController?.present(module, animated: true)
     }
-    
-    class func createAddingModuleFor(delegate: NewTodoReciever) -> UIViewController {
+
+    func createDetailModule(for scenario: DetailScenario,
+                            onSave: ParameterClosure<Todo>?) -> DetailScreenView {
         let view: DetailScreenView = DetailView.instantiate(from: .main)
-        configureModule(for: view, delegate: delegate)
-        return view as! UIViewController
+        switch scenario {
+            case .new:
+                configureModule(for: view)
+            case .edit(let element):
+                configureModule(for: view, todo: element)
+        }
+        return view
     }
-    
-    private class func configureModule(for view: DetailScreenView, todo: Todo? = nil, delegate: NewTodoReciever? = nil) {
+
+    private func configureModule(for view: DetailScreenView,
+                                 todo: Todo? = nil,
+                                 onSave: ParameterClosure<Todo>? = nil) {
         var presenter: DetailScreenPresenter = DetailPresenter()
-        let router = DetailRouter()
-        router.todoRecieverDelegate = delegate
-        view.presenter = presenter
+        presenter.router = self
         presenter.todo = todo
         presenter.view = view
-        presenter.router = router
-    }
-    
-    func saveTodo(_ todo: Todo) {
-        todoRecieverDelegate?.todoDidAdded(todo)
+        view.presenter = presenter
     }
 }
