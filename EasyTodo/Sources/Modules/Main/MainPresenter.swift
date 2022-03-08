@@ -2,33 +2,47 @@ import UIKit
 
 class MainPresenter: MainScreenPresenter {
     var view: MainScreenView?
-    
+    var router: MainScreenRouter?
+
     var interactor: MainScreenInteractor? {
         didSet {
             interactor?.getTodos()
         }
     }
-    
-    var router: MainScreenRouter?
-    
+
+    private(set) var todos: [Todo] = []
+
     func interactorDidLoadTodos(_ result: Result<[Todo], Error>) {
         switch result {
-            case .success(let todos):
-                view?.update(with: todos)
+            case .success(let list):
+                todos = list
+                view?.update()
             case .failure(let error):
+                todos = []
                 view?.update(with: error.localizedDescription)
         }
     }
-    
+
     func showDetailOf(_ todo: Todo) {
-        router?.showDetail(from: view!, todo)
+        router?.showDetail(for: todo)
     }
-    
+
     func showNewDetail() {
-        router?.showNewDetail(from: view!)
+        router?.showNewDetail()
     }
-    
+
     func todoDidAdd(_ todo: Todo) {
-        view?.update(with: todo)
+        todos.append(todo)
+        view?.update()
+    }
+
+    func todoDidUpdate(_ todo: Todo) {
+        guard let existedTodo = todos.first(where: { $0.id == todo.id }) else {
+            return
+        }
+
+        existedTodo.title = todo.title
+        existedTodo.description = todo.description
+        view?.update()
     }
 }

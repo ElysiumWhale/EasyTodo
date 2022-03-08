@@ -2,11 +2,9 @@ import Foundation
 
 class MainInteractor: MainScreenInteractor {
     var presenter: MainScreenPresenter?
-    
-    func getTodos() {
-        guard let url = URL(string: URLStrings.jsonServerTodos.rawValue) else { return }
 
-        let task = URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
+    func getTodos() {
+        let task = URLSession.shared.dataTask(with: UrlFactory.todosUrl) { [weak self] data, _, error in
             guard let data = data, error == nil else {
                 self?.presenter?.interactorDidLoadTodos(.failure(AppErrors.connectionError))
                 return
@@ -22,7 +20,7 @@ class MainInteractor: MainScreenInteractor {
         }
 
         task.resume()
-        
+
         // test
         // presenter?.interactorDidLoadTodos(.success(Mocks.todos))
     }

@@ -2,15 +2,20 @@ import UIKit
 
 class SceneDelegate: UIResponder {
     var window: UIWindow?
+    var mainRouter: MainScreenRouter?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        
-        let mainController = MainRouter.start()
-        let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = mainController
-        self.window = window
-        window.makeKeyAndVisible()
+
+        mainRouter = MainRouter()
+        guard let mainRouter = mainRouter else {
+            return
+        }
+
+        let newWindow = UIWindow(windowScene: windowScene)
+        newWindow.rootViewController = mainRouter.start()
+        window = newWindow
+        window?.makeKeyAndVisible()
     }
 }
 
