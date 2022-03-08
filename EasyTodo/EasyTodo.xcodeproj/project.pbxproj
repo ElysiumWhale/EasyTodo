@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1412E3B427D6947300AC9AA3 /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1412E3B327D6947300AC9AA3 /* Typealiases.swift */; };
+		1412E3B627D6977000AC9AA3 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1412E3B527D6977000AC9AA3 /* String+Extensions.swift */; };
+		14519F2E27D78B9400AFFCEB /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14519F2D27D78B9400AFFCEB /* BaseRouter.swift */; };
 		146CE92826CAEAAE0072B603 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146CE92726CAEAAE0072B603 /* AppDelegate.swift */; };
 		146CE92A26CAEAAE0072B603 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146CE92926CAEAAE0072B603 /* SceneDelegate.swift */; };
 		146CE93126CAEAAF0072B603 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 146CE93026CAEAAF0072B603 /* Assets.xcassets */; };
@@ -22,7 +25,7 @@
 		146CE95C26CB02850072B603 /* TodoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146CE95B26CB02850072B603 /* TodoCell.swift */; };
 		146CE95E26CB05580072B603 /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146CE95D26CB05580072B603 /* ToggleButton.swift */; };
 		146CE96026CB12C10072B603 /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146CE95F26CB12C10072B603 /* Mocks.swift */; };
-		146CE96226CB1FA80072B603 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146CE96126CB1FA80072B603 /* Extensions.swift */; };
+		146CE96226CB1FA80072B603 /* UI+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146CE96126CB1FA80072B603 /* UI+Extensions.swift */; };
 		146CE96426CB326F0072B603 /* DetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146CE96326CB326F0072B603 /* DetailRouter.swift */; };
 		146CE96626CB34750072B603 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146CE96526CB34750072B603 /* DetailView.swift */; };
 		146CE96A26CB34910072B603 /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146CE96926CB34910072B603 /* DetailPresenter.swift */; };
@@ -30,6 +33,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1412E3B327D6947300AC9AA3 /* Typealiases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typealiases.swift; sourceTree = "<group>"; };
+		1412E3B527D6977000AC9AA3 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		14519F2D27D78B9400AFFCEB /* BaseRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
 		146CE92426CAEAAE0072B603 /* EasyTodo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyTodo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		146CE92726CAEAAE0072B603 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		146CE92926CAEAAE0072B603 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -47,7 +53,7 @@
 		146CE95B26CB02850072B603 /* TodoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCell.swift; sourceTree = "<group>"; };
 		146CE95D26CB05580072B603 /* ToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButton.swift; sourceTree = "<group>"; };
 		146CE95F26CB12C10072B603 /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
-		146CE96126CB1FA80072B603 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		146CE96126CB1FA80072B603 /* UI+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UI+Extensions.swift"; sourceTree = "<group>"; };
 		146CE96326CB326F0072B603 /* DetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRouter.swift; sourceTree = "<group>"; };
 		146CE96526CB34750072B603 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		146CE96926CB34910072B603 /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
@@ -65,6 +71,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1412E3B227D6943D00AC9AA3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1412E3B327D6947300AC9AA3 /* Typealiases.swift */,
+				1412E3B527D6977000AC9AA3 /* String+Extensions.swift */,
+				146CE96126CB1FA80072B603 /* UI+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		146CE91B26CAEAAE0072B603 = {
 			isa = PBXGroup;
 			children = (
@@ -86,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				146CE94C26CAF0260072B603 /* Model */,
+				1412E3B227D6943D00AC9AA3 /* Extensions */,
 				146CE93F26CAEEA20072B603 /* Protocols */,
 				146CE93C26CAECE00072B603 /* Modules */,
 				146CE95A26CB024E0072B603 /* Views */,
@@ -107,6 +124,7 @@
 		146CE93C26CAECE00072B603 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				14519F2D27D78B9400AFFCEB /* BaseRouter.swift */,
 				146CE93D26CAED2D0072B603 /* Main */,
 				146CE93E26CAED360072B603 /* Detail */,
 			);
@@ -168,7 +186,6 @@
 				146CE95726CAF8670072B603 /* Storyboards */,
 				146CE95B26CB02850072B603 /* TodoCell.swift */,
 				146CE95D26CB05580072B603 /* ToggleButton.swift */,
-				146CE96126CB1FA80072B603 /* Extensions.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -250,13 +267,16 @@
 				146CE92A26CAEAAE0072B603 /* SceneDelegate.swift in Sources */,
 				146CE96426CB326F0072B603 /* DetailRouter.swift in Sources */,
 				146CE94E26CAF03E0072B603 /* Todo.swift in Sources */,
+				14519F2E27D78B9400AFFCEB /* BaseRouter.swift in Sources */,
 				146CE95026CAF0EB0072B603 /* MainPresenter.swift in Sources */,
 				146CE95226CAF1840072B603 /* MainInteractor.swift in Sources */,
-				146CE96226CB1FA80072B603 /* Extensions.swift in Sources */,
+				146CE96226CB1FA80072B603 /* UI+Extensions.swift in Sources */,
 				146CE95E26CB05580072B603 /* ToggleButton.swift in Sources */,
 				146CE94126CAEEDD0072B603 /* MainScreenProtocols.swift in Sources */,
 				146CE95626CAF80A0072B603 /* Constants.swift in Sources */,
+				1412E3B627D6977000AC9AA3 /* String+Extensions.swift in Sources */,
 				146CE96626CB34750072B603 /* DetailView.swift in Sources */,
+				1412E3B427D6947300AC9AA3 /* Typealiases.swift in Sources */,
 				146CE96C26CB5B8E0072B603 /* DetailScreenProtocols.swift in Sources */,
 				146CE96026CB12C10072B603 /* Mocks.swift in Sources */,
 				146CE96A26CB34910072B603 /* DetailPresenter.swift in Sources */,

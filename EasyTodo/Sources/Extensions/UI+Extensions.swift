@@ -47,9 +47,9 @@ extension UITextField {
 extension UICollectionViewCell {
     func configureShadow(with cornerRadius: CGFloat) {
         layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOffset = CGSize(width: 4.0, height: 4.0)
-        layer.shadowRadius = 3.0
-        layer.shadowOpacity = 0.6
+        layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
+        layer.shadowRadius = 2.0
+        layer.shadowOpacity = 0.5
         layer.masksToBounds = false
         //layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius).cgPath
     }
@@ -78,8 +78,54 @@ extension UIColor {
         case main = "MainTint"
         case secondary = "SecondaryTint"
     }
-    
-    convenience init(_ tint: AppTints) {
+
+    static func appTint(_ tint: AppTints) -> Self {
         self.init(named: tint.rawValue)!
     }
 }
+
+extension CGColor {
+    static func appTint(_ tint: UIColor.AppTints) -> CGColor {
+        UIColor.appTint(tint).cgColor
+    }
+}
+
+// MARK: - Sugar init and instatiate
+extension UIStoryboard {
+    convenience init(id: Storyboards) {
+        self.init(name: id.rawValue, bundle: .main)
+    }
+
+    func instantiate<ViewController: UIViewController>(id: String) -> ViewController {
+        let controller = instantiateViewController(withIdentifier: id) as? ViewController
+        guard let result = controller else {
+            assertionFailure("Identifier \(id) is not mapped to type \(ViewController.Type.self)")
+            return ViewController()
+        }
+
+        return result
+    }
+}
+
+extension UICollectionView {
+    func isEmpty(inSection: Int = .zero) -> Bool {
+        numberOfItems(inSection: inSection) == .zero
+    }
+
+    func isNotEmpty(inSection: Int = .zero) -> Bool {
+        !isEmpty(inSection: inSection)
+    }
+}
+
+// MARK: - MainQueueRunnable sugar extension
+protocol MainQueueRunnable { }
+
+extension MainQueueRunnable {
+    func dispatch(_ action: VoidClosure?) {
+        DispatchQueue.main.async {
+            action?()
+        }
+    }
+}
+
+extension UIViewController: MainQueueRunnable { }
