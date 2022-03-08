@@ -15,6 +15,8 @@ enum AppErrors: String, Error {
     case corruptedData = "Corrupted data"
 }
 
-enum URLStrings: String {
-    case jsonServerTodos = "https://my-json-server.typicode.com/ElysiumWhale/EasyTodo/todos"
+enum UrlFactory {
+    static var todosUrl: URL {
+        URL(string: "https://my-json-server.typicode.com/ElysiumWhale/EasyTodo/todos")!
+    }
 }
