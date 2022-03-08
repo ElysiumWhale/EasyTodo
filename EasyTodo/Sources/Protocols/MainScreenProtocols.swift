@@ -1,35 +1,34 @@
 import UIKit
 
-protocol NewTodoReciever {
-    func todoDidAdded(_ todo: Todo)
+protocol MainScreenRouter: Routable {
+    var presenter: MainScreenPresenter? { get set }
+
+    func start() -> UIViewController
+    func showDetail(for todo: Todo)
+    func showNewDetail()
 }
 
-protocol MainScreenRouter {
-    var view: MainScreenView? { get set }
-    
-    func showDetail(from view: MainScreenView, _ todo: Todo)
-    func showNewDetail(from view: MainScreenView)
-}
-
-protocol MainScreenPresenter {
+protocol MainScreenPresenter: AnyObject {
     var view: MainScreenView? { get set }
     var interactor: MainScreenInteractor? { get set }
     var router: MainScreenRouter? { get set }
-    
+
+    var todos: [Todo] { get }
+
     func interactorDidLoadTodos(_ result: Result<[Todo], Error>)
     func todoDidAdd(_ todo: Todo)
+    func todoDidUpdate(_ todo: Todo)
     func showDetailOf(_ todo: Todo)
     func showNewDetail()
 }
 
 protocol MainScreenInteractor {
     var presenter: MainScreenPresenter? { get set }
-    
+
     func getTodos()
 }
 
 protocol MainScreenView: AnyObject {
-    func update(with todos: [Todo])
-    func update(with newTodo: Todo)
+    func update()
     func update(with error: String)
 }
