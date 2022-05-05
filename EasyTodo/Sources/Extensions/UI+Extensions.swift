@@ -129,3 +129,31 @@ extension MainQueueRunnable {
 }
 
 extension UIViewController: MainQueueRunnable { }
+
+// MARK: - Adding subviews
+extension UIView {
+    func addSubviews(_ subviews: UIView...) {
+        for subview in subviews {
+            addSubview(subview)
+        }
+    }
+
+    func addSubviews(_ subviews: [UIView]) {
+        for subview in subviews {
+            addSubview(subview)
+        }
+    }
+}
+
+// MARK: - Wrapping navigation
+extension UIViewController {
+    var wrappedInNavigation: UIViewController {
+        UINavigationController(rootViewController: self)
+    }
+}
+
+extension UIFont {
+    static func avenirBlackFont(ofSize: CGFloat) -> UIFont {
+        UIFont(name: "Avenir-Black", size: ofSize)!
+    }
+}

@@ -7,3 +7,11 @@ extension String {
     static let serverDateMask = "yyyy-MM-dd"
     static let displayDateMask = "dd.MM.yyyy"
 }
+
+extension Date {
+    func formatted(with mask: String) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = mask
+        return formatter.string(from: self)
+    }
+}
