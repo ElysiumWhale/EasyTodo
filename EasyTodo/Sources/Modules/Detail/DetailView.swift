@@ -54,7 +54,7 @@ final class DetailView: InitialazableViewController, DetailScreenView {
     }
 
     override func configureAppearance() {
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
 
         titleTextField.layer.cornerRadius = 5
         titleTextField.layer.borderWidth = 1
