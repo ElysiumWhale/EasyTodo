@@ -6,24 +6,25 @@ class MainPresenter: MainScreenPresenter {
 
     var interactor: MainScreenInteractor? {
         didSet {
-            interactor?.getTodos()
+            Task {
+                await interactor?.getTodos()
+            }
         }
     }
 
     private(set) var todos: [Todo] = []
 
-    func interactorDidLoadTodos(_ result: Result<[Todo], Error>) {
-        switch result {
-            case .success(let list):
-                todos = list
-                view?.update()
-            case .failure(let error):
-                todos = []
-                view?.update(with: error.localizedDescription)
-        }
+    func interactorDidLoadTodos(_ todos: [Todo]) {
+        self.todos = todos
+        view?.update()
     }
 
-    func showDetailOf(_ todo: Todo) {
+    func interactorDidFailedWithError(_ error: AppErrors) {
+        todos = []
+        view?.update(with: error.localizedDescription)
+    }
+
+    func showDetail(of todo: Todo) {
         router?.showDetail(for: todo)
     }
 

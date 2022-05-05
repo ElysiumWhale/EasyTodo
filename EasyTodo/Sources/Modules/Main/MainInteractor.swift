@@ -1,27 +1,21 @@
 import Foundation
 
 class MainInteractor: MainScreenInteractor {
+    let networkService: TodosService
+
     var presenter: MainScreenPresenter?
 
-    func getTodos() {
-        let task = URLSession.shared.dataTask(with: UrlFactory.todosUrl) { [weak self] data, _, error in
-            guard let data = data, error == nil else {
-                self?.presenter?.interactorDidLoadTodos(.failure(AppErrors.connectionError))
-                return
-            }
+    init(networkService: TodosService = NetworkService()) {
+        self.networkService = networkService
+    }
 
-            do {
-                let todos = try JSONDecoder().decode([TodoDTO].self, from: data)
-                self?.presenter?.interactorDidLoadTodos(.success(todos.map { $0.toDomain()} ))
-            }
-            catch {
-                self?.presenter?.interactorDidLoadTodos(.failure(AppErrors.corruptedData))
-            }
+    func getTodos() async {
+        let result = await networkService.loadTodos()
+        switch result {
+            case .success(let todos):
+                presenter?.interactorDidLoadTodos(todos)
+            case .failure(let error):
+                presenter?.interactorDidFailedWithError(error)
         }
-
-        task.resume()
-
-        // test
-        // presenter?.interactorDidLoadTodos(.success(Mocks.todos))
     }
 }

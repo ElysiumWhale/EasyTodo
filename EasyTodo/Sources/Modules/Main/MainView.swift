@@ -47,7 +47,7 @@ extension MainView: UICollectionViewDelegate {
             return
         }
 
-        presenter.showDetailOf(presenter.todos[indexPath.row])
+        presenter.showDetail(of: presenter.todos[indexPath.row])
     }
 }
 
