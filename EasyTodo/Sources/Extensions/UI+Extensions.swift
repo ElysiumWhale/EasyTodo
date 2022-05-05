@@ -147,7 +147,7 @@ extension UIView {
 
 // MARK: - Wrapping navigation
 extension UIViewController {
-    var wrappedInNavigation: UIViewController {
+    var wrappedInNavigation: UINavigationController {
         UINavigationController(rootViewController: self)
     }
 }

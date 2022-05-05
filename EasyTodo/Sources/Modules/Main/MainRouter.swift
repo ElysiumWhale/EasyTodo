@@ -26,17 +26,13 @@ class MainRouter: BaseRouter, MainScreenRouter {
     }
 
     func start() -> UIViewController {
-        let initial = UIStoryboard(id: .main).instantiateInitialViewController()
-
-        guard let navigation = initial as? UINavigationController,
-              let view = navigation.children.first as? MainView else {
-                  return UINavigationController()
-              }
+        let view = MainView.instantiate(from: .main)
+        let navigationWrapped = view.wrappedInNavigation
 
         let presenter: MainScreenPresenter = MainPresenter()
         var interactor: MainScreenInteractor = MainInteractor()
 
-        self.navigationController = navigation
+        self.navigationController = navigationWrapped
         self.presenter = presenter
         view.presenter = presenter
         presenter.view = view
@@ -44,6 +40,6 @@ class MainRouter: BaseRouter, MainScreenRouter {
         presenter.interactor = interactor
         interactor.presenter = presenter
 
-        return navigation
+        return navigationWrapped
     }
 }

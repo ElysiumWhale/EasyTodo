@@ -1,6 +1,6 @@
 import UIKit
 
-final class MainView: UIViewController, MainScreenView {
+final class MainView: UIViewController, MainScreenView, StoryboardedView {
     @IBOutlet private var todosCollectionView: UICollectionView!
 
     var presenter: MainScreenPresenter?
