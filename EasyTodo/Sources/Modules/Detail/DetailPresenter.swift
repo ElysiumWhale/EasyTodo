@@ -1,17 +1,10 @@
 import Foundation
 
-class DetailPresenter: DetailScreenPresenter {
+final class DetailPresenter: DetailScreenPresenter {
     weak var view: DetailScreenView?
     var router: DetailScreenRouter?
 
     var todo: Todo?
-
-    func viewDidLoad() {
-        view?.showDetails(todo?.title ?? .empty,
-                          todo?.description ?? .empty,
-                          todo?.creationDate ?? Date(),
-                          isNew: todo == nil)
-    }
 
     func saveTodo(title: String, description: String) {
         todo?.title = title

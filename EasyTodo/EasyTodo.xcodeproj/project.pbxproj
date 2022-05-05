@@ -3,12 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		1412E3B427D6947300AC9AA3 /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1412E3B327D6947300AC9AA3 /* Typealiases.swift */; };
 		1412E3B627D6977000AC9AA3 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1412E3B527D6977000AC9AA3 /* String+Extensions.swift */; };
+		142D91792823DDDC00FC9598 /* InitialazableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142D91782823DDDC00FC9598 /* InitialazableView.swift */; };
+		142D917B2823DE0A00FC9598 /* InitialazableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142D917A2823DE0A00FC9598 /* InitialazableViewController.swift */; };
+		142D917D2824179900FC9598 /* InputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142D917C2824179900FC9598 /* InputTextField.swift */; };
 		14519F2E27D78B9400AFFCEB /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14519F2D27D78B9400AFFCEB /* BaseRouter.swift */; };
 		146CE92826CAEAAE0072B603 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146CE92726CAEAAE0072B603 /* AppDelegate.swift */; };
 		146CE92A26CAEAAE0072B603 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146CE92926CAEAAE0072B603 /* SceneDelegate.swift */; };
@@ -30,11 +33,15 @@
 		146CE96626CB34750072B603 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146CE96526CB34750072B603 /* DetailView.swift */; };
 		146CE96A26CB34910072B603 /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146CE96926CB34910072B603 /* DetailPresenter.swift */; };
 		146CE96C26CB5B8E0072B603 /* DetailScreenProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146CE96B26CB5B8E0072B603 /* DetailScreenProtocols.swift */; };
+		14BA2AA12823380A00F54767 /* TinyConstraints in Frameworks */ = {isa = PBXBuildFile; productRef = 14BA2AA02823380A00F54767 /* TinyConstraints */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1412E3B327D6947300AC9AA3 /* Typealiases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typealiases.swift; sourceTree = "<group>"; };
 		1412E3B527D6977000AC9AA3 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		142D91782823DDDC00FC9598 /* InitialazableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialazableView.swift; sourceTree = "<group>"; };
+		142D917A2823DE0A00FC9598 /* InitialazableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialazableViewController.swift; sourceTree = "<group>"; };
+		142D917C2824179900FC9598 /* InputTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextField.swift; sourceTree = "<group>"; };
 		14519F2D27D78B9400AFFCEB /* BaseRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
 		146CE92426CAEAAE0072B603 /* EasyTodo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyTodo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		146CE92726CAEAAE0072B603 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14BA2AA12823380A00F54767 /* TinyConstraints in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +133,8 @@
 			isa = PBXGroup;
 			children = (
 				14519F2D27D78B9400AFFCEB /* BaseRouter.swift */,
+				142D91782823DDDC00FC9598 /* InitialazableView.swift */,
+				142D917A2823DE0A00FC9598 /* InitialazableViewController.swift */,
 				146CE93D26CAED2D0072B603 /* Main */,
 				146CE93E26CAED360072B603 /* Detail */,
 			);
@@ -186,6 +196,7 @@
 				146CE95726CAF8670072B603 /* Storyboards */,
 				146CE95B26CB02850072B603 /* TodoCell.swift */,
 				146CE95D26CB05580072B603 /* ToggleButton.swift */,
+				142D917C2824179900FC9598 /* InputTextField.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -206,6 +217,9 @@
 			dependencies = (
 			);
 			name = EasyTodo;
+			packageProductDependencies = (
+				14BA2AA02823380A00F54767 /* TinyConstraints */,
+			);
 			productName = EasyTodo;
 			productReference = 146CE92426CAEAAE0072B603 /* EasyTodo.app */;
 			productType = "com.apple.product-type.application";
@@ -233,6 +247,9 @@
 				Base,
 			);
 			mainGroup = 146CE91B26CAEAAE0072B603;
+			packageReferences = (
+				14BA2A9F2823380A00F54767 /* XCRemoteSwiftPackageReference "TinyConstraints" */,
+			);
 			productRefGroup = 146CE92526CAEAAE0072B603 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -263,9 +280,11 @@
 				146CE92826CAEAAE0072B603 /* AppDelegate.swift in Sources */,
 				146CE95426CAF1AB0072B603 /* MainView.swift in Sources */,
 				146CE94B26CAEFAD0072B603 /* MainRouter.swift in Sources */,
+				142D917D2824179900FC9598 /* InputTextField.swift in Sources */,
 				146CE95C26CB02850072B603 /* TodoCell.swift in Sources */,
 				146CE92A26CAEAAE0072B603 /* SceneDelegate.swift in Sources */,
 				146CE96426CB326F0072B603 /* DetailRouter.swift in Sources */,
+				142D917B2823DE0A00FC9598 /* InitialazableViewController.swift in Sources */,
 				146CE94E26CAF03E0072B603 /* Todo.swift in Sources */,
 				14519F2E27D78B9400AFFCEB /* BaseRouter.swift in Sources */,
 				146CE95026CAF0EB0072B603 /* MainPresenter.swift in Sources */,
@@ -279,6 +298,7 @@
 				1412E3B427D6947300AC9AA3 /* Typealiases.swift in Sources */,
 				146CE96C26CB5B8E0072B603 /* DetailScreenProtocols.swift in Sources */,
 				146CE96026CB12C10072B603 /* Mocks.swift in Sources */,
+				142D91792823DDDC00FC9598 /* InitialazableView.swift in Sources */,
 				146CE96A26CB34910072B603 /* DetailPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -473,6 +493,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		14BA2A9F2823380A00F54767 /* XCRemoteSwiftPackageReference "TinyConstraints" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/roberthein/TinyConstraints";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		14BA2AA02823380A00F54767 /* TinyConstraints */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 14BA2A9F2823380A00F54767 /* XCRemoteSwiftPackageReference "TinyConstraints" */;
+			productName = TinyConstraints;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 146CE91C26CAEAAE0072B603 /* Project object */;
 }

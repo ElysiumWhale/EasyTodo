@@ -1,6 +1,6 @@
 import UIKit
 
-class MainView: UIViewController, MainScreenView {
+final class MainView: UIViewController, MainScreenView {
     @IBOutlet private var todosCollectionView: UICollectionView!
 
     var presenter: MainScreenPresenter?
@@ -53,11 +53,13 @@ extension MainView: UICollectionViewDelegate {
 
 // MARK: - UICollectionViewDataSource
 extension MainView: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView,
+                        numberOfItemsInSection section: Int) -> Int {
         presenter?.todos.count ?? .zero
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cells.todoCell.rawValue,
                                                             for: indexPath) as? TodoCell,
               let todo = presenter?.todos[indexPath.row] else {
