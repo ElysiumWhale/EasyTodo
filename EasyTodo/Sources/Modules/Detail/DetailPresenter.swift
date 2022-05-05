@@ -2,8 +2,8 @@ import Foundation
 
 final class DetailPresenter: DetailScreenPresenter {
     weak var view: DetailScreenView?
-    var router: DetailScreenRouter?
 
+    var router: DetailScreenRouter?
     var todo: Todo?
 
     func saveTodo(title: String, description: String) {

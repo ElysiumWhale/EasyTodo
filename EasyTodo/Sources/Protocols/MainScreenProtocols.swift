@@ -15,17 +15,18 @@ protocol MainScreenPresenter: AnyObject {
 
     var todos: [Todo] { get }
 
-    func interactorDidLoadTodos(_ result: Result<[Todo], Error>)
+    func interactorDidLoadTodos(_ todos: [Todo])
+    func interactorDidFailedWithError(_ error: AppErrors)
     func todoDidAdd(_ todo: Todo)
     func todoDidUpdate(_ todo: Todo)
-    func showDetailOf(_ todo: Todo)
+    func showDetail(of todo: Todo)
     func showNewDetail()
 }
 
 protocol MainScreenInteractor {
     var presenter: MainScreenPresenter? { get set }
 
-    func getTodos()
+    func getTodos() async
 }
 
 protocol MainScreenView: AnyObject {
