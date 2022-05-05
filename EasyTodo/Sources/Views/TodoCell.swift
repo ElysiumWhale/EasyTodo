@@ -27,17 +27,27 @@ class TodoCell: UICollectionViewCell {
 
     private func configureTextFor(_ state: TodoStates, _ title: String, _ description: String) {
         let attributes = [NSAttributedString.Key.strikethroughStyle: NSUnderlineStyle.single.rawValue]
-        titleLabel.attributedText = state == .active
-            ? NSAttributedString(string: title)
-            : NSAttributedString(string: title, attributes: attributes)
-        descriptionLabel.attributedText = state == .active
-            ? NSAttributedString(string: description)
-            : NSAttributedString(string: description, attributes: attributes)
+        titleLabel.attributedText = .attributed(title,
+                                                shouldUseAttributes: state == .active,
+                                                attributes: attributes)
+        descriptionLabel.attributedText = .attributed(description,
+                                                      shouldUseAttributes: state == .active,
+                                                      attributes: attributes)
     }
 
     @IBAction private func toggleButtonDidPress(sender: ToggleButton?) {
         toggleButton.toggle()
         configureTextFor(toggleButton.todoState, title, descr)
         onToggle?((state: toggleButton.todoState, index: index))
+    }
+}
+
+private extension NSAttributedString {
+    static func attributed(_ string: String,
+                           shouldUseAttributes: Bool,
+                           attributes: [NSAttributedString.Key : Any]? = nil) -> NSAttributedString {
+        shouldUseAttributes
+            ? NSAttributedString(string: string)
+            : NSAttributedString(string: string, attributes: attributes)
     }
 }
