@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -32,6 +32,7 @@
 		146CE96626CB34750072B603 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146CE96526CB34750072B603 /* DetailView.swift */; };
 		146CE96A26CB34910072B603 /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146CE96926CB34910072B603 /* DetailPresenter.swift */; };
 		146CE96C26CB5B8E0072B603 /* DetailScreenProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146CE96B26CB5B8E0072B603 /* DetailScreenProtocols.swift */; };
+		14BA2AA12823380A00F54767 /* TinyConstraints in Frameworks */ = {isa = PBXBuildFile; productRef = 14BA2AA02823380A00F54767 /* TinyConstraints */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14BA2AA12823380A00F54767 /* TinyConstraints in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,6 +214,9 @@
 			dependencies = (
 			);
 			name = EasyTodo;
+			packageProductDependencies = (
+				14BA2AA02823380A00F54767 /* TinyConstraints */,
+			);
 			productName = EasyTodo;
 			productReference = 146CE92426CAEAAE0072B603 /* EasyTodo.app */;
 			productType = "com.apple.product-type.application";
@@ -239,6 +244,9 @@
 				Base,
 			);
 			mainGroup = 146CE91B26CAEAAE0072B603;
+			packageReferences = (
+				14BA2A9F2823380A00F54767 /* XCRemoteSwiftPackageReference "TinyConstraints" */,
+			);
 			productRefGroup = 146CE92526CAEAAE0072B603 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -481,6 +489,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		14BA2A9F2823380A00F54767 /* XCRemoteSwiftPackageReference "TinyConstraints" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/roberthein/TinyConstraints";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		14BA2AA02823380A00F54767 /* TinyConstraints */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 14BA2A9F2823380A00F54767 /* XCRemoteSwiftPackageReference "TinyConstraints" */;
+			productName = TinyConstraints;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 146CE91C26CAEAAE0072B603 /* Project object */;
 }
