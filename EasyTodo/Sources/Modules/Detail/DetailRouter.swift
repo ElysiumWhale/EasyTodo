@@ -13,9 +13,9 @@ final class DetailRouter: BaseRouter, DetailScreenRouter {
         navigationController?.present(module.wrappedInNavigation, animated: true)
     }
 
-    func createDetailModule(for scenario: DetailScenario,
-                            onSave: ParameterClosure<Todo>?) -> DetailScreenView {
-        let view: DetailScreenView = DetailView.instantiate(from: .main)
+    private func createDetailModule(for scenario: DetailScenario,
+                                    onSave: ParameterClosure<Todo>?) -> DetailScreenView {
+        let view: DetailScreenView = DetailView()
         switch scenario {
             case .new:
                 configureModule(for: view)

@@ -1,63 +1,134 @@
 import UIKit
+import TinyConstraints
 
-class DetailView: UIViewController, DetailScreenView {
-    @IBOutlet private var dateLabel: UILabel!
-    @IBOutlet private var titleTextField: UITextField!
-    @IBOutlet private var descriptionTextView: UITextView!
-    @IBOutlet private var actionButton: UIButton!
-    @IBOutlet private var navBar: UINavigationBar!
+final class DetailView: InitialazableViewController, DetailScreenView {
+    private let barButton = UIBarButtonItem()
+    private let titleLabel = UILabel()
+    private let dateLabel = UILabel()
+    private let titleTextField = InputTextField()
+    private let descriptionLabel = UILabel()
+    private let descriptionTextView = UITextView()
+    private let actionButton = UIButton()
 
     var presenter: DetailScreenPresenter?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         hideKeyboardWhenTappedAround()
-        configureAppearance()
-        presenter?.viewDidLoad()
-    }
-    
-    @IBAction func textDidChanged(sender: Any?) {
-        if let textField = sender as? UITextField {
-            textField.toggleErrorState(hasError: textField.text == nil || textField.text!.isEmpty,
-                                       normalColor: .appTint(.main))
-            actionButton.isEnabled = textField.text != nil && !textField.text!.isEmpty
-            actionButton.backgroundColor = actionButton.isEnabled ? .appTint(.main) : .gray
-            return
-        }
     }
 
-    @IBAction func closeDidPress(_ sender: Any) {
+    override func addViews() {
+        navigationItem.rightBarButtonItem = barButton
+
+        view.addSubviews(titleLabel,
+                         dateLabel,
+                         titleTextField,
+                         descriptionLabel,
+                         descriptionTextView,
+                         actionButton)
+    }
+
+    override func configureLayout() {
+        titleLabel.topToSuperview(offset: 10, usingSafeArea: true)
+        titleLabel.leftToSuperview(offset: 16)
+
+        dateLabel.leftToRight(of: titleLabel, offset: 10)
+        dateLabel.rightToSuperview(offset: -16)
+        dateLabel.topToSuperview(offset: 10, usingSafeArea: true)
+
+        titleTextField.topToBottom(of: titleLabel, offset: 10)
+        titleTextField.horizontalToSuperview(insets: .horizontal(16))
+        titleTextField.height(45)
+
+        descriptionLabel.topToBottom(of: titleTextField, offset: 20)
+        descriptionLabel.leftToSuperview(offset: 16)
+
+        descriptionTextView.topToBottom(of: descriptionLabel, offset: 10)
+        descriptionTextView.horizontalToSuperview(insets: .horizontal(16))
+        descriptionTextView.height(300)
+
+        actionButton.topToBottom(of: descriptionTextView, offset: 10)
+        actionButton.centerX(to: descriptionTextView)
+        actionButton.size(.init(width: 150, height: 45))
+    }
+
+    override func configureAppearance() {
+        view.backgroundColor = .white
+
+        titleTextField.layer.cornerRadius = 5
+        titleTextField.layer.borderWidth = 1
+        titleTextField.layer.borderColor = .appTint(.main)
+        titleTextField.font = .systemFont(ofSize: 18, weight: .semibold)
+
+        descriptionTextView.layer.cornerRadius = 5
+        descriptionTextView.layer.borderWidth = 1
+        descriptionTextView.layer.borderColor = .appTint(.main)
+        descriptionTextView.font = .systemFont(ofSize: 18, weight: .semibold)
+
+        actionButton.backgroundColor = .appTint(.secondary)
+        actionButton.layer.cornerRadius = 10
+        actionButton.titleLabel?.font = .avenirBlackFont(ofSize: 23)
+
+        barButton.image = UIImage(systemName: "xmark")
+        barButton.tintColor = .appTint(.secondary)
+
+        dateLabel.font = .avenirBlackFont(ofSize: 30)
+        dateLabel.textColor = .appTint(.secondary)
+
+        titleLabel.font = .avenirBlackFont(ofSize: 30)
+        titleLabel.textColor = .appTint(.main)
+
+        descriptionLabel.font = .avenirBlackFont(ofSize: 30)
+        descriptionLabel.textColor = .appTint(.main)
+    }
+
+    override func localize() {
+        titleLabel.text = "Title"
+        titleTextField.placeholder = "Enter title for todo"
+        descriptionLabel.text = "Description"
+
+        configureText(with: presenter?.todo)
+    }
+
+    override func configureActions() {
+        barButton.target = self
+        barButton.action = #selector(closeDidPress)
+        titleTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        actionButton.addTarget(self, action: #selector(saveDidPressed), for: .touchUpInside)
+    }
+
+    // MARK: - Private methods
+    private func configureText(with todo: Todo?) {
+        let isNew = todo == nil
+        actionButton.setTitle(isNew ? "Add" : "Save", for: .normal)
+        navigationItem.title = isNew ? "Create todo" : "Details"
+        descriptionTextView.text = todo?.description
+        titleTextField.text = todo?.title
+        dateLabel.text = (todo?.creationDate ?? Date()).formatted(with: .displayDateMask)
+    }
+
+    @objc private func textDidChange(sender: UITextField?) {
+        guard let textField = sender else {
+            return
+        }
+
+        textField.toggleErrorState(hasError: textField.text == nil || textField.text!.isEmpty,
+                                   normalColor: .appTint(.main))
+        actionButton.isEnabled = textField.text != nil && !textField.text!.isEmpty
+        actionButton.backgroundColor = actionButton.isEnabled ? .appTint(.main) : .gray
+    }
+
+    @objc private func closeDidPress(_ sender: Any) {
         dismiss(animated: true)
     }
 
-    @IBAction func saveDidPressed(sender: UIButton?) {
+    @objc private func saveDidPressed(sender: UIButton?) {
         guard let title = titleTextField.text, !title.isEmpty else {
-            textDidChanged(sender: titleTextField)
+            textDidChange(sender: titleTextField)
             return
         }
 
         presenter?.saveTodo(title: title, description: descriptionTextView.text)
-    }
-
-    func showDetails(_ title: String, _ description: String, _ date: Date, isNew: Bool) {
-        let dateForm = DateFormatter()
-        dateForm.dateFormat = .displayDateMask
-        dateLabel.text = dateForm.string(from: date)
-        titleTextField.text = title
-        descriptionTextView.text = description
-        actionButton.setTitle(isNew ? "Add" : "Save", for: .normal)
-        navBar.topItem?.title = isNew ? "Create" : "Todo"
-        actionButton.fadeIn()
-    }
-
-    private func configureAppearance() {
-        actionButton.alpha = .zero
-        titleTextField.layer.cornerRadius = 5
-        titleTextField.layer.borderWidth = 1
-        titleTextField.layer.borderColor = .appTint(.main)
-        descriptionTextView.layer.cornerRadius = 5
-        descriptionTextView.layer.borderWidth = 1
-        descriptionTextView.layer.borderColor = .appTint(.main)
-        actionButton.layer.cornerRadius = 10
     }
 }

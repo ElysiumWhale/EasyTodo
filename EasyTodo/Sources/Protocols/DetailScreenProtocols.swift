@@ -14,8 +14,6 @@ extension StoryboardedView {
 
 protocol DetailScreenView: StoryboardedView, UIViewController {
     var presenter: DetailScreenPresenter? { get set }
-
-    func showDetails(_ title: String, _ description: String, _ date: Date, isNew: Bool)
 }
 
 protocol DetailScreenPresenter {
@@ -23,7 +21,6 @@ protocol DetailScreenPresenter {
     var router: DetailScreenRouter? { get set }
     var todo: Todo? { get set }
 
-    func viewDidLoad()
     func saveTodo(title: String, description: String)
 }
 
