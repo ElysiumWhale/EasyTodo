@@ -12,7 +12,9 @@
 		142D91792823DDDC00FC9598 /* InitialazableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142D91782823DDDC00FC9598 /* InitialazableView.swift */; };
 		142D917B2823DE0A00FC9598 /* InitialazableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142D917A2823DE0A00FC9598 /* InitialazableViewController.swift */; };
 		142D917D2824179900FC9598 /* InputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142D917C2824179900FC9598 /* InputTextField.swift */; };
+		142D918028245EDA00FC9598 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142D917F28245EDA00FC9598 /* NetworkService.swift */; };
 		14519F2E27D78B9400AFFCEB /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14519F2D27D78B9400AFFCEB /* BaseRouter.swift */; };
+		145F71252824671000277257 /* NetworkRequestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145F71242824671000277257 /* NetworkRequestable.swift */; };
 		146CE92826CAEAAE0072B603 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146CE92726CAEAAE0072B603 /* AppDelegate.swift */; };
 		146CE92A26CAEAAE0072B603 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146CE92926CAEAAE0072B603 /* SceneDelegate.swift */; };
 		146CE93126CAEAAF0072B603 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 146CE93026CAEAAF0072B603 /* Assets.xcassets */; };
@@ -42,7 +44,9 @@
 		142D91782823DDDC00FC9598 /* InitialazableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialazableView.swift; sourceTree = "<group>"; };
 		142D917A2823DE0A00FC9598 /* InitialazableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialazableViewController.swift; sourceTree = "<group>"; };
 		142D917C2824179900FC9598 /* InputTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextField.swift; sourceTree = "<group>"; };
+		142D917F28245EDA00FC9598 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		14519F2D27D78B9400AFFCEB /* BaseRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
+		145F71242824671000277257 /* NetworkRequestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestable.swift; sourceTree = "<group>"; };
 		146CE92426CAEAAE0072B603 /* EasyTodo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyTodo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		146CE92726CAEAAE0072B603 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		146CE92926CAEAAE0072B603 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -89,6 +93,15 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		142D917E28245EC800FC9598 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				142D917F28245EDA00FC9598 /* NetworkService.swift */,
+				145F71242824671000277257 /* NetworkRequestable.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		146CE91B26CAEAAE0072B603 = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +122,7 @@
 		146CE92626CAEAAE0072B603 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				142D917E28245EC800FC9598 /* Network */,
 				146CE94C26CAF0260072B603 /* Model */,
 				1412E3B227D6943D00AC9AA3 /* Extensions */,
 				146CE93F26CAEEA20072B603 /* Protocols */,
@@ -284,9 +298,11 @@
 				146CE95C26CB02850072B603 /* TodoCell.swift in Sources */,
 				146CE92A26CAEAAE0072B603 /* SceneDelegate.swift in Sources */,
 				146CE96426CB326F0072B603 /* DetailRouter.swift in Sources */,
+				145F71252824671000277257 /* NetworkRequestable.swift in Sources */,
 				142D917B2823DE0A00FC9598 /* InitialazableViewController.swift in Sources */,
 				146CE94E26CAF03E0072B603 /* Todo.swift in Sources */,
 				14519F2E27D78B9400AFFCEB /* BaseRouter.swift in Sources */,
+				142D918028245EDA00FC9598 /* NetworkService.swift in Sources */,
 				146CE95026CAF0EB0072B603 /* MainPresenter.swift in Sources */,
 				146CE95226CAF1840072B603 /* MainInteractor.swift in Sources */,
 				146CE96226CB1FA80072B603 /* UI+Extensions.swift in Sources */,
@@ -368,7 +384,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -423,7 +439,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
