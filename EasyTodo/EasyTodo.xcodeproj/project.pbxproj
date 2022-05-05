@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1412E3B427D6947300AC9AA3 /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1412E3B327D6947300AC9AA3 /* Typealiases.swift */; };
 		1412E3B627D6977000AC9AA3 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1412E3B527D6977000AC9AA3 /* String+Extensions.swift */; };
+		142D91792823DDDC00FC9598 /* InitialazableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142D91782823DDDC00FC9598 /* InitialazableView.swift */; };
+		142D917B2823DE0A00FC9598 /* InitialazableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142D917A2823DE0A00FC9598 /* InitialazableViewController.swift */; };
 		14519F2E27D78B9400AFFCEB /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14519F2D27D78B9400AFFCEB /* BaseRouter.swift */; };
 		146CE92826CAEAAE0072B603 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146CE92726CAEAAE0072B603 /* AppDelegate.swift */; };
 		146CE92A26CAEAAE0072B603 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146CE92926CAEAAE0072B603 /* SceneDelegate.swift */; };
@@ -35,6 +37,8 @@
 /* Begin PBXFileReference section */
 		1412E3B327D6947300AC9AA3 /* Typealiases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typealiases.swift; sourceTree = "<group>"; };
 		1412E3B527D6977000AC9AA3 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		142D91782823DDDC00FC9598 /* InitialazableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialazableView.swift; sourceTree = "<group>"; };
+		142D917A2823DE0A00FC9598 /* InitialazableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialazableViewController.swift; sourceTree = "<group>"; };
 		14519F2D27D78B9400AFFCEB /* BaseRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
 		146CE92426CAEAAE0072B603 /* EasyTodo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyTodo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		146CE92726CAEAAE0072B603 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -125,6 +129,8 @@
 			isa = PBXGroup;
 			children = (
 				14519F2D27D78B9400AFFCEB /* BaseRouter.swift */,
+				142D91782823DDDC00FC9598 /* InitialazableView.swift */,
+				142D917A2823DE0A00FC9598 /* InitialazableViewController.swift */,
 				146CE93D26CAED2D0072B603 /* Main */,
 				146CE93E26CAED360072B603 /* Detail */,
 			);
@@ -266,6 +272,7 @@
 				146CE95C26CB02850072B603 /* TodoCell.swift in Sources */,
 				146CE92A26CAEAAE0072B603 /* SceneDelegate.swift in Sources */,
 				146CE96426CB326F0072B603 /* DetailRouter.swift in Sources */,
+				142D917B2823DE0A00FC9598 /* InitialazableViewController.swift in Sources */,
 				146CE94E26CAF03E0072B603 /* Todo.swift in Sources */,
 				14519F2E27D78B9400AFFCEB /* BaseRouter.swift in Sources */,
 				146CE95026CAF0EB0072B603 /* MainPresenter.swift in Sources */,
@@ -279,6 +286,7 @@
 				1412E3B427D6947300AC9AA3 /* Typealiases.swift in Sources */,
 				146CE96C26CB5B8E0072B603 /* DetailScreenProtocols.swift in Sources */,
 				146CE96026CB12C10072B603 /* Mocks.swift in Sources */,
+				142D91792823DDDC00FC9598 /* InitialazableView.swift in Sources */,
 				146CE96A26CB34910072B603 /* DetailPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
