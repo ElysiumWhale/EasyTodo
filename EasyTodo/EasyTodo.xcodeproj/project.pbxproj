@@ -11,6 +11,7 @@
 		1412E3B627D6977000AC9AA3 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1412E3B527D6977000AC9AA3 /* String+Extensions.swift */; };
 		142D91792823DDDC00FC9598 /* InitialazableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142D91782823DDDC00FC9598 /* InitialazableView.swift */; };
 		142D917B2823DE0A00FC9598 /* InitialazableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142D917A2823DE0A00FC9598 /* InitialazableViewController.swift */; };
+		142D917D2824179900FC9598 /* InputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142D917C2824179900FC9598 /* InputTextField.swift */; };
 		14519F2E27D78B9400AFFCEB /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14519F2D27D78B9400AFFCEB /* BaseRouter.swift */; };
 		146CE92826CAEAAE0072B603 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146CE92726CAEAAE0072B603 /* AppDelegate.swift */; };
 		146CE92A26CAEAAE0072B603 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146CE92926CAEAAE0072B603 /* SceneDelegate.swift */; };
@@ -40,6 +41,7 @@
 		1412E3B527D6977000AC9AA3 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		142D91782823DDDC00FC9598 /* InitialazableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialazableView.swift; sourceTree = "<group>"; };
 		142D917A2823DE0A00FC9598 /* InitialazableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialazableViewController.swift; sourceTree = "<group>"; };
+		142D917C2824179900FC9598 /* InputTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextField.swift; sourceTree = "<group>"; };
 		14519F2D27D78B9400AFFCEB /* BaseRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
 		146CE92426CAEAAE0072B603 /* EasyTodo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyTodo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		146CE92726CAEAAE0072B603 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 				146CE95726CAF8670072B603 /* Storyboards */,
 				146CE95B26CB02850072B603 /* TodoCell.swift */,
 				146CE95D26CB05580072B603 /* ToggleButton.swift */,
+				142D917C2824179900FC9598 /* InputTextField.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 				146CE92826CAEAAE0072B603 /* AppDelegate.swift in Sources */,
 				146CE95426CAF1AB0072B603 /* MainView.swift in Sources */,
 				146CE94B26CAEFAD0072B603 /* MainRouter.swift in Sources */,
+				142D917D2824179900FC9598 /* InputTextField.swift in Sources */,
 				146CE95C26CB02850072B603 /* TodoCell.swift in Sources */,
 				146CE92A26CAEAAE0072B603 /* SceneDelegate.swift in Sources */,
 				146CE96426CB326F0072B603 /* DetailRouter.swift in Sources */,
