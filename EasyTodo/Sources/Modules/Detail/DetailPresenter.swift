@@ -1,6 +1,6 @@
 import Foundation
 
-class DetailPresenter: DetailScreenPresenter {
+final class DetailPresenter: DetailScreenPresenter {
     weak var view: DetailScreenView?
     var router: DetailScreenRouter?
 

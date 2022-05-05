@@ -5,12 +5,12 @@ enum DetailScenario {
     case edit(element: Todo)
 }
 
-class DetailRouter: BaseRouter, DetailScreenRouter {
+final class DetailRouter: BaseRouter, DetailScreenRouter {
     var onSaveTodo: ParameterClosure<Todo>?
 
     func start(with scenario: DetailScenario) {
         let module = createDetailModule(for: scenario, onSave: onSaveTodo)
-        navigationController?.present(module, animated: true)
+        navigationController?.present(module.wrappedInNavigation, animated: true)
     }
 
     func createDetailModule(for scenario: DetailScenario,
@@ -22,6 +22,7 @@ class DetailRouter: BaseRouter, DetailScreenRouter {
             case .edit(let element):
                 configureModule(for: view, todo: element)
         }
+
         return view
     }
 
