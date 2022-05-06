@@ -5,7 +5,7 @@ enum TodoStates: String {
     case done = "done"
 }
 
-class Todo {
+final class Todo: Identifiable {
     let id: Int
     /// yyyy-MM-dd
     let creationDate: Date

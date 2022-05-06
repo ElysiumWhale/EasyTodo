@@ -8,6 +8,16 @@ extension String {
     static let displayDateMask = "dd.MM.yyyy"
 }
 
+extension NSAttributedString {
+    static func attributed(_ string: String,
+                           shouldUseAttributes: Bool,
+                           attributes: [NSAttributedString.Key : Any]? = nil) -> NSAttributedString {
+        shouldUseAttributes
+            ? NSAttributedString(string: string)
+            : NSAttributedString(string: string, attributes: attributes)
+    }
+}
+
 extension Date {
     func formatted(with mask: String) -> String {
         let formatter = DateFormatter()
