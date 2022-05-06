@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1404333E28248D5900BC01BF /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1404333D28248D5900BC01BF /* SectionHeaderView.swift */; };
 		1412E3B427D6947300AC9AA3 /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1412E3B327D6947300AC9AA3 /* Typealiases.swift */; };
 		1412E3B627D6977000AC9AA3 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1412E3B527D6977000AC9AA3 /* String+Extensions.swift */; };
 		142D91792823DDDC00FC9598 /* InitialazableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142D91782823DDDC00FC9598 /* InitialazableView.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1404333D28248D5900BC01BF /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		1412E3B327D6947300AC9AA3 /* Typealiases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typealiases.swift; sourceTree = "<group>"; };
 		1412E3B527D6977000AC9AA3 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		142D91782823DDDC00FC9598 /* InitialazableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialazableView.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 				146CE95B26CB02850072B603 /* TodoCell.swift */,
 				146CE95D26CB05580072B603 /* ToggleButton.swift */,
 				142D917C2824179900FC9598 /* InputTextField.swift */,
+				1404333D28248D5900BC01BF /* SectionHeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 				146CE95426CAF1AB0072B603 /* MainView.swift in Sources */,
 				146CE94B26CAEFAD0072B603 /* MainRouter.swift in Sources */,
 				142D917D2824179900FC9598 /* InputTextField.swift in Sources */,
+				1404333E28248D5900BC01BF /* SectionHeaderView.swift in Sources */,
 				146CE95C26CB02850072B603 /* TodoCell.swift in Sources */,
 				146CE92A26CAEAAE0072B603 /* SceneDelegate.swift in Sources */,
 				146CE96426CB326F0072B603 /* DetailRouter.swift in Sources */,
