@@ -191,3 +191,19 @@ extension UICollectionViewLayout {
         }
     }
 }
+
+// MARK: - Snapshot helpers
+extension NSDiffableDataSourceSnapshot {
+    mutating func deleteItem(_ item: ItemIdentifierType) {
+        let sectionIdentifier = sectionIdentifier(containingItem: item)
+
+        deleteItems([item])
+
+        guard let id = sectionIdentifier,
+              numberOfItems(inSection: id) == 0 else {
+            return
+        }
+
+        deleteSections([id])
+    }
+}

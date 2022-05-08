@@ -1,77 +1,189 @@
 import UIKit
 
-final class MainView: UIViewController, MainScreenView, StoryboardedView {
-    @IBOutlet private var todosCollectionView: UICollectionView!
+enum MainViewSections: String {
+    case active = "Active"
+    case done = "Done"
+
+    static prefix func !(value: Self) -> Self {
+        switch value {
+            case .active:
+                return .done
+            case .done:
+                return .active
+        }
+    }
+}
+
+final class MainView: InitialazableViewController, MainScreenView {
+    private let addItem = UIBarButtonItem()
+    private let collectionDirector: MainViewCollectionDirector = {
+        let view = UICollectionView(frame: .zero, collectionViewLayout: .mainViewCompositionalLayout)
+        return MainViewCollectionDirector(collection: view)
+    }()
 
     var presenter: MainScreenPresenter?
 
+    private var dataSource: UICollectionViewDiffableDataSource<MainViewSections, Todo.ID> {
+        collectionDirector.dataSource
+    }
+
+    private var collection: UICollectionView {
+        collectionDirector.collectionView
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        todosCollectionView.delegate = self
-        todosCollectionView.dataSource = self
-        todosCollectionView.alwaysBounceVertical = true
-        todosCollectionView.backgroundView = createBackground(labelText: "Loading...")
+
+        collectionDirector.input = self
+    }
+
+    // MARK: - InitialazableView
+    override func addViews() {
+        navigationItem.rightBarButtonItem = addItem
+        view.addSubviews(collection)
+    }
+
+    override func configureLayout() {
+        collection.alwaysBounceVertical = true
+        collection.edgesToSuperview()
+    }
+
+    override func configureAppearance() {
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.title = "Easy Todo"
+        addItem.image = UIImage(systemName: "plus")
+        addItem.tintColor = .appTint(.main)
+        collection.showsHorizontalScrollIndicator = false
+        collection.backgroundColor = .systemBackground
+    }
+
+    override func localize() {
+        collection.backgroundView = createBackground(labelText: "Loading...")
+        navigationItem.title = "Easy Todo"
+    }
+
+    override func configureActions() {
+        addItem.target = self
+        addItem.action = #selector(addTodoDidPress)
+    }
+
+    // MARK: - MainScreenView
+    func didLoad(todos: [Todo]) {
+        dispatch {
+            self.didLoadTodos()
+        }
+    }
+
+    func todoDidAdd(_ todo: Todo) {
+        dispatch { [self] in
+            var snapshot = dataSource.snapshot()
+            snapshot.addItemsWithSectionCheck([todo.id], to: .active)
+            dataSource.apply(snapshot)
+        }
+    }
+
+    func todoDidUpdate(_ todo: Todo) {
+        dispatch { [self] in
+            var snapshot = dataSource.snapshot()
+            snapshot.reloadItems([todo.id])
+            dataSource.apply(snapshot)
+        }
     }
 
     func update(with error: String) {
-        dispatch { [weak self] in
-            self?.todosCollectionView.reloadData()
-            self?.todosCollectionView.backgroundView = self?.createBackground(labelText: error)
+        dispatch { [self] in
+            var snapshot = dataSource.snapshot()
+            snapshot.deleteAllItems()
+            snapshot.deleteSections([.done, .active])
+            dataSource.apply(snapshot)
+            collection.backgroundView = createBackground(labelText: error)
         }
     }
 
-    func update() {
-        dispatch { [weak self] in
-            self?.updateCollection()
-        }
-    }
-
-    @IBAction func addTodoDidPress(_ sender: Any) {
+    // MARK: - Private methods
+    @objc private func addTodoDidPress(_ sender: Any) {
         presenter?.showNewDetail()
     }
 
-    private func updateCollection() {
-        todosCollectionView.reloadData()
-        todosCollectionView.backgroundView = todosCollectionView.isEmpty()
+    private func didLoadTodos() {
+        var snapshot = NSDiffableDataSourceSnapshot<MainViewSections, Todo.ID>()
+
+        let activeIds = presenter?.todos.filter { $0.state == .active }.map { $0.id } ?? []
+        snapshot.addItemsWithSectionCheck(activeIds, to: .active)
+
+        let doneIds = presenter?.todos.filter { $0.state == .done }.map { $0.id } ?? []
+        snapshot.addItemsWithSectionCheck(doneIds, to: .done)
+
+        dataSource.apply(snapshot)
+
+        collection.backgroundView = activeIds.isEmpty && doneIds.isEmpty
             ? createBackground(labelText: "No todos. Press \"+\" to add new.")
             : nil
     }
-}
 
-// MARK: - UICollectionViewDelegate
-extension MainView: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let presenter = presenter else {
+    private func toggleTodo(todo: Todo?) {
+        guard let todo = todo else {
             return
         }
 
-        presenter.showDetail(of: presenter.todos[indexPath.row])
+        var snapshot = dataSource.snapshot()
+        snapshot.deleteItem(todo.id)
+        snapshot.addItemsWithSectionCheck([todo.id],
+                                          to: todo.state == .done ? .done : .active)
+        dataSource.apply(snapshot)
     }
 }
 
-// MARK: - UICollectionViewDataSource
-extension MainView: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView,
-                        numberOfItemsInSection section: Int) -> Int {
-        presenter?.todos.count ?? .zero
+// MARK: - MainViewCollectionInput
+extension MainView: MainViewCollectionInput {
+    func configureCell(_ cell: TodosCell, with todo: Todo) {
+        cell.configure(model: todo) { [weak self, weak todo] in
+            self?.toggleTodo(todo: todo)
+        }
     }
 
-    func collectionView(_ collectionView: UICollectionView,
-                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cells.todoCell.rawValue,
-                                                            for: indexPath) as? TodoCell,
-              let todo = presenter?.todos[indexPath.row] else {
-                  return UICollectionViewCell()
-              }
+    func model(for id: Todo.ID) -> Todo? {
+        presenter?.todos.first(where: { $0.id == id })
+    }
 
-        cell.configure(title: todo.title, description: todo.description,
-                       state: todo.state, index: indexPath.row)
-        cell.onToggle = { [weak self] params in
-            self?.presenter?.todos[params.index].state = params.state
+    func configureHeader(view: SectionHeaderView, section: Int) {
+        switch section {
+            case 0:
+                view.text = MainViewSections.active.rawValue
+            case 1:
+                view.text = MainViewSections.done.rawValue
+            default:
+                return
+        }
+    }
+
+    func onSelectItem(at indexPath: IndexPath) {
+        guard let presenter = presenter,
+              let cell = collection.cellForItem(at: indexPath) as? TodosCell,
+              let model = cell.model else {
+            return
         }
 
-        return cell
+        presenter.showDetail(of: model)
+    }
+}
+
+// MARK: - Snapshot helper
+private extension NSDiffableDataSourceSnapshot where SectionIdentifierType == MainViewSections {
+    mutating func addItemsWithSectionCheck(_ items: [ItemIdentifierType], to section: SectionIdentifierType) {
+        guard !items.isEmpty else {
+            return
+        }
+
+        if indexOfSection(section) == nil || numberOfItems(inSection: section) < 1 {
+            if indexOfSection(!section) == nil {
+                appendSections([section])
+            } else {
+                section == .active
+                    ? insertSections([section], beforeSection: .done)
+                    : insertSections([section], afterSection: .active)
+            }
+        }
+
+        appendItems(items, toSection: section)
     }
 }

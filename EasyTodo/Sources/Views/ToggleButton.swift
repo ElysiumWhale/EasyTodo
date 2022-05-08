@@ -3,9 +3,9 @@ import UIKit
 @IBDesignable class ToggleButton: UIButton {
     @IBInspectable var highlightedImage: UIImage?
 
-    var todoState: TodoStates = .active {
+    var isToggled: Bool = false {
         didSet {
-            isSelected = todoState == .done ? true : false
+            isSelected = isToggled
         }
     }
 
@@ -18,6 +18,6 @@ import UIKit
     }
 
     func toggle() {
-        todoState = todoState == .active ? .done : .active
+        isToggled = !isToggled
     }
 }
