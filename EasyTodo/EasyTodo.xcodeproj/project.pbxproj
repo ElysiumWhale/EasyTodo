@@ -28,7 +28,6 @@
 		146CE95226CAF1840072B603 /* MainInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146CE95126CAF1840072B603 /* MainInteractor.swift */; };
 		146CE95426CAF1AB0072B603 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146CE95326CAF1AB0072B603 /* MainView.swift */; };
 		146CE95626CAF80A0072B603 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146CE95526CAF80A0072B603 /* Constants.swift */; };
-		146CE95926CAF8960072B603 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 146CE95826CAF8960072B603 /* Main.storyboard */; };
 		146CE95C26CB02850072B603 /* TodoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146CE95B26CB02850072B603 /* TodoCell.swift */; };
 		146CE95E26CB05580072B603 /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146CE95D26CB05580072B603 /* ToggleButton.swift */; };
 		146CE96026CB12C10072B603 /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146CE95F26CB12C10072B603 /* Mocks.swift */; };
@@ -64,7 +63,6 @@
 		146CE95126CAF1840072B603 /* MainInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInteractor.swift; sourceTree = "<group>"; };
 		146CE95326CAF1AB0072B603 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		146CE95526CAF80A0072B603 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		146CE95826CAF8960072B603 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		146CE95B26CB02850072B603 /* TodoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCell.swift; sourceTree = "<group>"; };
 		146CE95D26CB05580072B603 /* ToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButton.swift; sourceTree = "<group>"; };
 		146CE95F26CB12C10072B603 /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
@@ -200,19 +198,10 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		146CE95726CAF8670072B603 /* Storyboards */ = {
-			isa = PBXGroup;
-			children = (
-				146CE93226CAEAAF0072B603 /* LaunchScreen.storyboard */,
-				146CE95826CAF8960072B603 /* Main.storyboard */,
-			);
-			path = Storyboards;
-			sourceTree = "<group>";
-		};
 		146CE95A26CB024E0072B603 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				146CE95726CAF8670072B603 /* Storyboards */,
+				146CE93226CAEAAF0072B603 /* LaunchScreen.storyboard */,
 				146CE95B26CB02850072B603 /* TodoCell.swift */,
 				146CE95D26CB05580072B603 /* ToggleButton.swift */,
 				142D917C2824179900FC9598 /* InputTextField.swift */,
@@ -284,7 +273,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				146CE95926CAF8960072B603 /* Main.storyboard in Resources */,
 				146CE93426CAEAAF0072B603 /* LaunchScreen.storyboard in Resources */,
 				146CE93126CAEAAF0072B603 /* Assets.xcassets in Resources */,
 			);
