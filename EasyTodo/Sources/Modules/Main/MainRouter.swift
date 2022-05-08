@@ -26,7 +26,7 @@ class MainRouter: BaseRouter, MainScreenRouter {
     }
 
     func start() -> UIViewController {
-        let view = MainView.instantiate(from: .main)
+        let view = MainView()
         let navigationWrapped = view.wrappedInNavigation
 
         let presenter: MainScreenPresenter = MainPresenter()
