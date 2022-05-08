@@ -16,25 +16,21 @@ enum MainViewSections: String {
 
 final class MainView: InitialazableViewController, MainScreenView {
     private let addItem = UIBarButtonItem()
-    private let collectionDirector: MainViewCollectionDirector = {
+    private lazy var collectionDirector: MainViewCollectionDirector = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: .mainViewCompositionalLayout)
-        return MainViewCollectionDirector(collection: view)
+        let director = MainViewCollectionDirector(collection: view)
+        director.input = self
+        return director
     }()
 
     var presenter: MainScreenPresenter?
 
-    private var dataSource: UICollectionViewDiffableDataSource<MainViewSections, Todo.ID> {
+    private var dataSource: DataSource<MainViewSections, Todo.ID> {
         collectionDirector.dataSource
     }
 
     private var collection: UICollectionView {
         collectionDirector.collectionView
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        collectionDirector.input = self
     }
 
     // MARK: - InitialazableView
