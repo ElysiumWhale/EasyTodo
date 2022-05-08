@@ -11,29 +11,28 @@ protocol MainViewCollectionInput: AnyObject {
 final class MainViewCollectionDirector: NSObject {
     let collectionView: UICollectionView
 
-    private(set) lazy var dataSource = configureDataSource()
-
-    weak var input: MainViewCollectionInput? {
+    private(set) var dataSource: DataSource<MainViewSections, Todo.ID>! {
         didSet {
-            if input != nil {
-                collectionView.dataSource = dataSource
-            }
+            collectionView.dataSource = dataSource
         }
     }
+
+    weak var input: MainViewCollectionInput?
 
     init(collection: UICollectionView) {
         collectionView = collection
         super.init()
         collectionView.delegate = self
+        dataSource = makeDataSource()
     }
 
-    func configureDataSource() -> DataSource<MainViewSections, Todo.ID> {
-        let cellRegistration = UICollectionView.CellRegistration<TodosCell, Todo> { [weak input] cell, _, todo in
-            input?.configureCell(cell, with: todo)
+    func makeDataSource() -> DataSource<MainViewSections, Todo.ID> {
+        let cellRegistration = UICollectionView.CellRegistration<TodosCell, Todo> { [weak self] cell, _, todo in
+            self?.input?.configureCell(cell, with: todo)
         }
 
-        let dataSource: DataSource<MainViewSections, Todo.ID> = DataSource(collectionView: collectionView) { [weak input] collectionView, indexPath, itemIdentifier in
-            guard let todo = input?.model(for: itemIdentifier) else {
+        let dataSource = DataSource<MainViewSections, Todo.ID>(collectionView: collectionView) { [weak self] collectionView, indexPath, itemIdentifier in
+            guard let todo = self?.input?.model(for: itemIdentifier) else {
                 return UICollectionViewCell()
             }
 
@@ -48,9 +47,9 @@ final class MainViewCollectionDirector: NSObject {
 
     private func makeHeaderProvider() -> SupplementaryViewProvider<MainViewSections, Todo.ID> {
         let kind = UICollectionView.elementKindSectionHeader
-        let registration = SupplementaryRegistration<SectionHeaderView>(elementKind: kind) { [weak input] supplementaryView, hk, indexPath in
+        let registration = SupplementaryRegistration<SectionHeaderView>(elementKind: kind) { [weak self] supplementaryView, _, indexPath in
 
-            input?.configureHeader(view: supplementaryView, section: indexPath.section)
+            self?.input?.configureHeader(view: supplementaryView, section: indexPath.section)
         }
 
         return { collectionView, _, indexPath in
