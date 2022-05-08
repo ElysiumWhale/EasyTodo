@@ -152,8 +152,42 @@ extension UIViewController {
     }
 }
 
+// MARK: - Avenir font
 extension UIFont {
     static func avenirBlackFont(ofSize: CGFloat) -> UIFont {
         UIFont(name: "Avenir-Black", size: ofSize)!
+    }
+}
+
+// MARK: - Compositional layouts
+extension UICollectionViewLayout {
+    static var mainViewCompositionalLayout: UICollectionViewCompositionalLayout {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                              heightDimension: .estimated(130))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                               heightDimension: .estimated(140))
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
+        group.contentInsets = .init(top: 0, leading: 16, bottom: 0, trailing: 16)
+
+        let headerFooterSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                                      heightDimension: .estimated(30))
+
+        let sectionHeader = SupplementaryItem(layoutSize: headerFooterSize,
+                                              elementKind: UICollectionView.elementKindSectionHeader,
+                                              alignment: .top)
+
+        return UICollectionViewCompositionalLayout { sectionIndex, _ in
+            switch sectionIndex {
+                case 0, 1:
+                    let section = NSCollectionLayoutSection(group: group)
+                    section.boundarySupplementaryItems = [sectionHeader]
+                    section.interGroupSpacing = 10
+                    return section
+                default:
+                    return NSCollectionLayoutSection(group: group)
+            }
+        }
     }
 }
