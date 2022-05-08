@@ -3,6 +3,15 @@ import Foundation
 enum TodoStates: String {
     case active = "active"
     case done = "done"
+
+    static prefix func !(value: Self) -> Self {
+        switch value {
+            case .active:
+                return .done
+            case .done:
+                return .active
+        }
+    }
 }
 
 final class Todo: Identifiable {
@@ -19,6 +28,10 @@ final class Todo: Identifiable {
         self.title = title
         self.description = description
         self.state = state
+    }
+
+    func toggle() {
+        state = !state
     }
 }
 
