@@ -10,4 +10,5 @@ Simple portfolio app based on VIPER architecture
 
 ## Technologies
 
-- UI: Programmatic Compositional layout and [TinyConstraints](https://github.com/roberthein/TinyConstraints)
+- UI: Programmatic Compositional layout and [**TinyConstraints**](https://github.com/roberthein/TinyConstraints)
+- Network: Async URLSession, mocks hosted by [**My JSON Server**](https://my-json-server.typicode.com/)
