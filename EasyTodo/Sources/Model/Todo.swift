@@ -3,9 +3,18 @@ import Foundation
 enum TodoStates: String {
     case active = "active"
     case done = "done"
+
+    static prefix func !(value: Self) -> Self {
+        switch value {
+            case .active:
+                return .done
+            case .done:
+                return .active
+        }
+    }
 }
 
-class Todo {
+final class Todo: Identifiable {
     let id: Int
     /// yyyy-MM-dd
     let creationDate: Date
@@ -19,6 +28,10 @@ class Todo {
         self.title = title
         self.description = description
         self.state = state
+    }
+
+    func toggle() {
+        state = !state
     }
 }
 

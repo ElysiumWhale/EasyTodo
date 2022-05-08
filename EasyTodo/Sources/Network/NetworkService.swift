@@ -10,3 +10,10 @@ final class NetworkService: TodosService, NetworkRequestable {
         return result.map { $0.map { $0.toDomain() } }
     }
 }
+
+final class MockService: TodosService, NetworkRequestable {
+    func loadTodos() async -> Result<[Todo], AppErrors> {
+        try? await Task.sleep(nanoseconds: 1_000_000_000)
+        return .success(.mocks)
+    }
+}

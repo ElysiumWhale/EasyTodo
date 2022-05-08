@@ -15,6 +15,7 @@ protocol MainScreenPresenter: AnyObject {
 
     var todos: [Todo] { get }
 
+    func model(for indexPath: IndexPath) -> Todo?
     func interactorDidLoadTodos(_ todos: [Todo])
     func interactorDidFailedWithError(_ error: AppErrors)
     func todoDidAdd(_ todo: Todo)
@@ -30,6 +31,8 @@ protocol MainScreenInteractor {
 }
 
 protocol MainScreenView: AnyObject {
-    func update()
+    func todoDidAdd(_ todo: Todo)
+    func todoDidUpdate(_ todo: Todo)
+    func didLoad(todos: [Todo])
     func update(with error: String)
 }
